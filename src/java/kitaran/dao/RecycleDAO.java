@@ -13,7 +13,7 @@ import kitaran.utils.DBConnection;
 public class RecycleDAO {
     
     public Recycle getRecycleById(int id) {
-        String query = "select * from recycles where id=?";
+        String query = "SELECT * FROM recycles WHERE id=?";
         Recycle request = null;
         
         try {
@@ -40,7 +40,7 @@ public class RecycleDAO {
     }
     
     public ArrayList<Recycle> getRecycleByUserId(int userId) {
-        String query = "select * from recycles where user_id=?";
+        String query = "SELECT * FROM recycles WHERE user_id=?";
         ArrayList<Recycle> requests = new ArrayList<>();
         
         try {
@@ -67,7 +67,7 @@ public class RecycleDAO {
     }
     
     public ArrayList<Recycle> getAllRecycles() {
-        String query = "select * from recycles";
+        String query = "SELECT * FROM recycles";
         ArrayList<Recycle> requests = new ArrayList<>();
         
         try {
@@ -93,7 +93,7 @@ public class RecycleDAO {
     }
     
     public boolean createRecycle(Recycle recycle) {
-        String query = "insert into recycles (user_id, bin_type, item, address) values (?, ?, ?, ?)";
+        String query = "INSERT INTO recycles (user_id, bin_type, item, address) VALUES (?, ?, ?, ?)";
         
         try {
             Connection conn = DBConnection.connect();
@@ -118,7 +118,7 @@ public class RecycleDAO {
     }
     
     public boolean updateRecycleWeight(int id, double weight) {
-        String query = "update recycles set weight=? where id=?";
+        String query = "UPDATE recycles SET weight=? WHERE id=?";
         
         try {
             Connection conn = DBConnection.connect();
@@ -142,7 +142,7 @@ public class RecycleDAO {
     }
     
     public boolean updateRecycleStatus(int id, String status) {
-        String query = "update recycles set status=? where id=?";
+        String query = "UPDATE recycles SET status=? WHERE id=?";
         
         try {
             Connection conn = DBConnection.connect();

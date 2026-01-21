@@ -20,7 +20,6 @@ public class PaymentServlet extends HttpServlet {
         
         HttpSession session = request.getSession(false);
         
-        // Check if user is logged in
         if (session == null || session.getAttribute("user") == null) {
             response.sendRedirect("login");
             return;
@@ -32,13 +31,13 @@ public class PaymentServlet extends HttpServlet {
         
         request.setAttribute("payment", payment);
         
-        // Forward to payment page
         request.getRequestDispatcher("/WEB-INF/jsp/payment.jsp").forward(request, response);
     }
     
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
         int id = Integer.parseInt(request.getParameter("requestId"));
         String bankName = request.getParameter("bankName");
         Payment payment = new Payment();
@@ -52,20 +51,5 @@ public class PaymentServlet extends HttpServlet {
             request.getRequestDispatcher("/WEB-INF/jsp/payment.jsp").forward(request, response);
         }
         response.sendRedirect("dashboard");
-    }
-    
-    private void viewPaymentHistory(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        
-        HttpSession session = request.getSession(false);
-        Integer userId = (Integer) session.getAttribute("userId");
-        
-        if (userId == null) {
-            response.sendRedirect("login.jsp");
-            return;
-        }
-        
-        request.setAttribute("payments", paymentDAO.getPaymentsByUserId(userId));
-        request.getRequestDispatcher("/WEB-INF/jsp/payment-history.jsp").forward(request, response);
     }
 }

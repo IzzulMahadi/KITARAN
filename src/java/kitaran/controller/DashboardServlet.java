@@ -39,12 +39,10 @@ public class DashboardServlet extends HttpServlet {
             
             ArrayList<AdminDTO> data = recycleDAO.getAdminData(filter);
             
-            // Get statistics
             int totalRequests = recycleDAO.getTotalRecycleCount();
             int pendingRequests = recycleDAO.getPendingRecycleCount();
             double totalSystemWeight = recycleDAO.getTotalSystemWeight();
             
-            // Set attributes for JSP
             request.setAttribute("data", data);
             request.setAttribute("totalRequests", totalRequests);
             request.setAttribute("pendingRequests", pendingRequests);
@@ -71,6 +69,7 @@ public class DashboardServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
         String action = request.getParameter("action");
         RecycleDAO recycleDAO = new RecycleDAO();
         PaymentDAO paymentDAO = new PaymentDAO();

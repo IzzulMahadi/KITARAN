@@ -12,7 +12,6 @@
     <link href="${pageContext.request.contextPath}/globals.css" rel="stylesheet">
     <title>Admin Dashboard - Kitaran</title>
     <style>
-        /* Admin-specific styles */
         .stats-banner {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -145,7 +144,6 @@
             gap: 6px;
         }
 
-        /* Modal Styles */
         .modal {
             display: none;
             position: fixed;
@@ -443,7 +441,6 @@
             document.getElementById('penaltyModal').style.display = 'none';
         }
 
-        // Close modal when clicking outside
         window.onclick = function(event) {
             const weightModal = document.getElementById('weightModal');
             const penaltyModal = document.getElementById('penaltyModal');

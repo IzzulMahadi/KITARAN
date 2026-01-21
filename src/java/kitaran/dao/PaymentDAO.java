@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class PaymentDAO {
     
     public boolean create(Payment payment) {
-        String query = "insert into payments (user_id, recycle_id, amount, reference) values (?, ?, ?, ?)";
+        String query = "INSERT INTO payments (user_id, recycle_id, amount, reference) VALUES (?, ?, ?, ?)";
         
         try {
             Connection conn = DBConnection.connect();
@@ -34,7 +34,7 @@ public class PaymentDAO {
     
     // Insert new payment
     public boolean update(Payment payment) {
-        String query = "update payments set bank_name=?, status=?, paydate=? where id=?";
+        String query = "UPDATE payments SET bank_name=?, status=?, paydate=? WHERE id=?";
         
         try {
             Connection conn = DBConnection.connect();
@@ -61,7 +61,7 @@ public class PaymentDAO {
     
     // Get payment by ID
     public Payment getPaymentById(int id) {
-        String query = "select * from payments where id=?";
+        String query = "SELECT * FROM payments WHERE id=?";
         Payment payment = null;
         
         try {
@@ -88,7 +88,7 @@ public class PaymentDAO {
     }
     
     public Payment getPaymentByRecycleId(int recycleId) {
-        String query = "select * from payments where recycle_id=?";
+        String query = "SELECT * FROM payments WHERE recycle_id=?";
         Payment payment = null;
         
         try {
@@ -140,9 +140,8 @@ public class PaymentDAO {
         return total;
     }
     
-    // Get all payments by user ID
     public ArrayList<Payment> getPaymentsByUserId(int userId) {
-        String query = "select * from payments where user_id=? order by paydate DESC";
+        String query = "SELECT * FROM payments WHERE user_id=? ORDER BY paydate DESC";
         ArrayList<Payment> payments = new ArrayList<>();
         
         try {
@@ -168,11 +167,8 @@ public class PaymentDAO {
         return payments;
     }
     
-    
-    
-    // Get all payments (for admin)
     public ArrayList<Payment> getAllPayments() {
-        String query = "select * from payments order by paydate DESC";
+        String query = "SELECT * FROM payments ORDER BY paydate DESC";
         ArrayList<Payment> payments = new ArrayList<>();
         
         try {
@@ -196,7 +192,6 @@ public class PaymentDAO {
         return payments;
     }
     
-    // Helper method to extract Payment object from ResultSet
     private Payment getPayment(ResultSet rs) throws SQLException {
         Payment payment = new Payment();
         payment.setId(rs.getInt("id"));

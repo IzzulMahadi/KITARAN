@@ -10,7 +10,7 @@ import kitaran.utils.DBConnection;
 
 public class UserDAO {
     public User getUserById(int id) {
-        String query = "select * from users where id=?";
+        String query = "SELECT * FROM users WHERE id=?";
         User user = null;
         
         try {
@@ -37,7 +37,7 @@ public class UserDAO {
     }
     
     public ArrayList<User> getAllUsers() {
-        String query = "select * from users";
+        String query = "SELECT * FROM users";
         ArrayList<User> user = new ArrayList<>();
         
         try {
